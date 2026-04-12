@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias (El culpable de tus 7k+ archivos)
+node_modules/
+
+# Archivos de producción / builds
+dist/
+dist-ssr/
+
+# Variables de entorno (¡Nunca subas tus contraseñas!)
+.env
+.env.local
+.env.*.local
+
+# Archivos de caché
+.npm
+.eslintcache
+.stylelintcache
+
+# Archivos del sistema y editores
+.DS_Store
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
