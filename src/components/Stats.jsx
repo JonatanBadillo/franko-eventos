@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import { Award, CalendarCheck, SmilePlus, MapPin } from 'lucide-react'
+import { Award, CalendarCheck, SmilePlus, MapPin , Star} from 'lucide-react'
 
 const STATS = [
   { icon: CalendarCheck, num: '500', suffix: '+', label: 'Eventos Corporativos'   },
-  { icon: Award,         num: '10',  suffix: '+', label: 'Años de Experiencia'    },
+  { icon: Award,         num: '15',  suffix: '+', label: 'Años de Experiencia'    },
   { icon: SmilePlus,     num: '98',  suffix: '%', label: 'Satisfacción de Clientes' },
-  { icon: MapPin,        num: '30',  suffix: '+', label: 'Ciudades en México'      },
+  { icon: Star, num: '100', suffix: '%', label: 'Eventos a Medida' },
+
 ]
 
 export default function Stats() {
