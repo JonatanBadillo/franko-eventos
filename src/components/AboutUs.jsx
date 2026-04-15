@@ -42,7 +42,6 @@ export default function AboutUs() {
             </p>
           </div>
 
-          {/* Mini stats */}
           {/* Pilares de la marca en lugar de números */}
           <div className="flex flex-wrap gap-x-12 gap-y-8 mt-10">
             {PILARES.map((p) => (
@@ -68,10 +67,6 @@ export default function AboutUs() {
           className="relative hidden lg:block"
           style={{ height: '520px' }}
         >
-          {/*
-           * SWAP: Add real photos by replacing the gradient backgrounds below with:
-           *   style={{ backgroundImage: "url('/images/about-1.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-           */}
 
           {/* Large card — top right */}
           <motion.div
@@ -80,15 +75,11 @@ export default function AboutUs() {
             className="absolute top-0 right-0 border border-border overflow-hidden"
             style={{
               width: '65%', height: '360px',
-              // Reemplazamos el gradiente por la imagen asegurando la compatibilidad con GitHub Pages
               backgroundImage: `url('${import.meta.env.BASE_URL}images/proposito1.png')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
           >
-
-            {/* SWAP: <img src="/images/about-1.jpg" className="w-full h-full object-cover" alt="Evento corporativo" /> */}
-
             {/* Gold badge */}
             <div
               className="absolute -bottom-4 -right-4 z-10 text-center"
@@ -102,39 +93,21 @@ export default function AboutUs() {
           </motion.div>
 
           {/* Small card — bottom left */}
-          {/* Small card — bottom left */}
           <motion.div
             whileHover={{ y: -8, scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-            // Agregamos rounded-xl y shadow-lg para mantener el estilo de la imagen principal
             className="absolute bottom-0 left-0 rounded-xl border border-border overflow-hidden shadow-lg z-10"
             style={{
               width: '55%', 
               height: '260px',
-              // Reemplazamos el gradiente por tu segunda imagen usando la variable de Vite
               backgroundImage: `url('${import.meta.env.BASE_URL}images/proposito2.png')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
           >
-            {/* Borramos el texto de placeholder (← Foto evento flagship) para que se vea la foto limpia */}
           </motion.div>
-        </motion.div>{/* Pilares de la marca en lugar de números */}
-          <div className="flex flex-wrap gap-x-12 gap-y-8 mt-10">
-            {PILARES.map((p) => (
-              <div key={p.titulo} className="flex flex-col gap-1 border-l border-border pl-4">
-                <span
-                  className="font-serif text-gold font-light leading-none"
-                  style={{ fontSize: '1.8rem' }}
-                >
-                  {p.titulo}
-                </span>
-                <span className="font-sans text-mist text-[0.70rem] tracking-[0.15em] uppercase">
-                  {p.etiqueta}
-                </span>
-              </div>
-            ))}
-          </div>
+
+        </motion.div>
 
       </div>
     </section>
