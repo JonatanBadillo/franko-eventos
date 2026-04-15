@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-const STATS = [
-  { num: '500+', label: 'Eventos realizados'    },
-  { num: '10+',  label: 'Años de experiencia'   },
-  { num: '98%',  label: 'Clientes satisfechos'  },
+const PILARES = [
+  { titulo: 'Precisión',  etiqueta: 'Logística Impecable' },
+  { titulo: 'Diseño',     etiqueta: 'Conceptos a Medida'  },
+  { titulo: 'Impacto',    etiqueta: 'Experiencias Únicas' },
 ]
 
 const reveal = {
@@ -24,45 +24,37 @@ export default function AboutUs() {
 
         {/* ── Left: Text ── */}
         <motion.div {...reveal}>
-          <span className="section-label">Quiénes Somos</span>
+          
           <h2
             className="font-serif text-cream mb-4 leading-tight"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 500 }}
           >
-            Más de una Década<br />
-            Creando <em className="italic text-gold-light">Momentos</em>
+            Nuestro<em className="italic text-gold-light"> Propósito</em>
           </h2>
           <div className="gold-line" />
 
           <div className="space-y-4 text-mist font-sans font-light text-[0.93rem] leading-relaxed">
             <p>
-              Franko Eventos Corporativos nació de la convicción de que cada evento es una
-              oportunidad de comunicar grandeza. Somos un equipo de especialistas en producción,
-              logística y diseño de experiencias que trabajan en perfecta sincronía.
+            Cada evento corporativo es una oportunidad única para fortalecer la imagen, cultura y relaciones de tu organización.
             </p>
             <p>
-              Nuestra misión es transformar los objetivos corporativos de nuestros clientes en
-              eventos memorables que fortalecen la cultura organizacional, las relaciones
-              comerciales y la identidad de marca.
-            </p>
-            <p>
-              Con presencia en todo México y una red de proveedores premium, garantizamos
-              estándares de calidad internacionales en cada proyecto.
+            Diseñamos experiencias estratégicas que trascienden lo convencional.
             </p>
           </div>
 
           {/* Mini stats */}
-          <div className="flex flex-wrap gap-10 mt-10">
-            {STATS.map((s) => (
-              <div key={s.label} className="flex items-baseline gap-2">
+          {/* Pilares de la marca en lugar de números */}
+          <div className="flex flex-wrap gap-x-12 gap-y-8 mt-10">
+            {PILARES.map((p) => (
+              <div key={p.titulo} className="flex flex-col gap-1 border-l border-border pl-4">
                 <span
                   className="font-serif text-gold font-light leading-none"
-                  style={{ fontSize: '2.8rem' }}
+                  style={{ fontSize: '1.8rem' }}
                 >
-                  {s.num}
+                  {p.titulo}
                 </span>
-                <span className="font-sans text-mist text-[0.75rem] tracking-wide uppercase">
-                  {s.label}
+                <span className="font-sans text-mist text-[0.70rem] tracking-[0.15em] uppercase">
+                  {p.etiqueta}
                 </span>
               </div>
             ))}
@@ -88,20 +80,21 @@ export default function AboutUs() {
             className="absolute top-0 right-0 border border-border overflow-hidden"
             style={{
               width: '65%', height: '360px',
-              background: 'linear-gradient(135deg, #1e2532, #2a2015)',
+              // Reemplazamos el gradiente por la imagen asegurando la compatibilidad con GitHub Pages
+              backgroundImage: `url('${import.meta.env.BASE_URL}images/proposito1.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
             }}
           >
+
             {/* SWAP: <img src="/images/about-1.jpg" className="w-full h-full object-cover" alt="Evento corporativo" /> */}
-            <span className="absolute bottom-3 left-3 text-[0.6rem] tracking-[0.2em] uppercase text-white/20 font-sans">
-              ← Foto del equipo / evento
-            </span>
 
             {/* Gold badge */}
             <div
               className="absolute -bottom-4 -right-4 z-10 text-center"
               style={{ background: 'var(--gold)', padding: '1rem 1.2rem' }}
             >
-              <span className="font-serif block leading-none text-obsidian" style={{ fontSize: '2rem', fontWeight: 600 }}>10</span>
+              <span className="font-serif block leading-none text-obsidian" style={{ fontSize: '2rem', fontWeight: 600 }}>+15</span>
               <span className="font-sans text-obsidian text-[0.55rem] tracking-[0.14em] uppercase">
                 Años de<br />excelencia
               </span>
@@ -109,21 +102,39 @@ export default function AboutUs() {
           </motion.div>
 
           {/* Small card — bottom left */}
+          {/* Small card — bottom left */}
           <motion.div
             whileHover={{ y: -8, scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-            className="absolute bottom-0 left-0 border border-border overflow-hidden z-10"
+            // Agregamos rounded-xl y shadow-lg para mantener el estilo de la imagen principal
+            className="absolute bottom-0 left-0 rounded-xl border border-border overflow-hidden shadow-lg z-10"
             style={{
-              width: '55%', height: '260px',
-              background: 'linear-gradient(135deg, #201a12, #1a2028)',
+              width: '55%', 
+              height: '260px',
+              // Reemplazamos el gradiente por tu segunda imagen usando la variable de Vite
+              backgroundImage: `url('${import.meta.env.BASE_URL}images/proposito2.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
             }}
           >
-            {/* SWAP: <img src="/images/about-2.jpg" className="w-full h-full object-cover" alt="Evento flagship" /> */}
-            <span className="absolute bottom-3 left-3 text-[0.6rem] tracking-[0.2em] uppercase text-white/20 font-sans">
-              ← Foto evento flagship
-            </span>
+            {/* Borramos el texto de placeholder (← Foto evento flagship) para que se vea la foto limpia */}
           </motion.div>
-        </motion.div>
+        </motion.div>{/* Pilares de la marca en lugar de números */}
+          <div className="flex flex-wrap gap-x-12 gap-y-8 mt-10">
+            {PILARES.map((p) => (
+              <div key={p.titulo} className="flex flex-col gap-1 border-l border-border pl-4">
+                <span
+                  className="font-serif text-gold font-light leading-none"
+                  style={{ fontSize: '1.8rem' }}
+                >
+                  {p.titulo}
+                </span>
+                <span className="font-sans text-mist text-[0.70rem] tracking-[0.15em] uppercase">
+                  {p.etiqueta}
+                </span>
+              </div>
+            ))}
+          </div>
 
       </div>
     </section>
