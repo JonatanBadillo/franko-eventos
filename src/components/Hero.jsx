@@ -12,24 +12,15 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        /*
-         * SWAP: Replace this gradient with your real background:
-         *
-         * Option A — Static image:
-         *   backgroundImage: "url('/images/hero-bg.jpg')",
-         *   backgroundSize: 'cover',
-         *   backgroundPosition: 'center',
-         *
-         * Option B — Video (add <video> element below and remove background styles)
-         */
-        background: 'linear-gradient(135deg, #080910 0%, #0f1118 40%, #0e0c0a 100%)',
+        // Dejamos un color negro base puro por si el video tarda un segundo en cargar
+        backgroundColor: '#000000', 
       }}
     >
       
        <video
-         className="absolute inset-0 w-full h-full object-cover opacity-30"
+         className="absolute inset-0 w-full h-full object-cover opacity-50" // Subí un poco la opacidad a 50 para que se note más
          autoPlay muted loop playsInline
-         src="/videos/hero-reel.mp4"
+         src={`${import.meta.env.BASE_URL}videos/hero-reel.mp4`} // ¡AQUÍ ESTÁ LA MAGIA PARA GITHUB PAGES!
        />
        <div className="absolute inset-0 bg-obsidian/60" />
       
