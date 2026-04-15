@@ -1,62 +1,49 @@
 import { motion } from 'framer-motion'
 import {
-  UtensilsCrossed,
-  MonitorPlay,
-  Users,
-  Building2,
-  Megaphone,
-  GlassWater,
+  Search,
+  Lightbulb,
+  CalendarDays,
+  Activity,
+  BarChart3,
 } from 'lucide-react'
 
-const SERVICES = [
+const STEPS = [
   {
     num: '01',
-    icon: UtensilsCrossed,
-    name: 'Banquetes & Gastronomía',
-    desc:
-      'Menús de autor, servicio de meseros de etiqueta y presentaciones culinarias para hasta 2,000 comensales. Proveedores certificados con estándares internacionales.',
+    icon: Search,
+    name: 'Diagnóstico',
+    desc: 'Análisis profundo de objetivos, audiencia y contexto organizacional.',
   },
   {
     num: '02',
-    icon: MonitorPlay,
-    name: 'Producción Audiovisual',
-    desc:
-      'Diseño de escenarios, pantallas LED de alta resolución, iluminación arquitectónica, streaming en vivo y equipos de sonido profesional de primer nivel.',
+    icon: Lightbulb,
+    name: 'Diseño',
+    desc: 'Conceptualización estratégica y propuesta de experiencia única.',
   },
   {
     num: '03',
-    icon: Users,
-    name: 'Team Building',
-    desc:
-      'Experiencias diseñadas para fortalecer equipos: actividades al aire libre, talleres creativos, olimpiadas corporativas y dinámicas de liderazgo.',
+    icon: CalendarDays,
+    name: 'Planificación',
+    desc: 'Logística detallada, proveedores y cronograma preciso.',
   },
   {
     num: '04',
-    icon: Building2,
-    name: 'Congresos & Convenciones',
-    desc:
-      'Gestión completa: registro de asistentes, coordinación de ponentes, logística de múltiples salas y transmisión híbrida para audiencias nacionales e internacionales.',
+    icon: Activity,
+    name: 'Ejecución',
+    desc: 'Implementación impecable con monitoreo en tiempo real.',
   },
   {
     num: '05',
-    icon: Megaphone,
-    name: 'Lanzamientos de Producto',
-    desc:
-      'Experiencias de marca inmersivas que generan impacto mediático. Conceptualización creativa, activaciones sensoriales y gestión de prensa especializada.',
-  },
-  {
-    num: '06',
-    icon: GlassWater,
-    name: 'Galas & Cenas Corporativas',
-    desc:
-      'Eventos de distinción con ambientación temática premium, entretenimiento en vivo, maestros de ceremonias y experiencias personalizadas para su empresa.',
+    icon: BarChart3,
+    name: 'Evaluación',
+    desc: 'Medición de resultados y aprendizajes para mejora continua.',
   },
 ]
 
 export default function Services() {
   return (
     <section
-      id="services"
+      id="metodologia"
       className="py-28 px-8 md:px-16"
       style={{ background: 'var(--ink)' }}
     >
@@ -68,30 +55,34 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
         >
-          <span className="section-label">Nuestros Servicios</span>
+          <span className="section-label" style={{ display: 'inline-block', marginBottom: '1rem' }}>Nuestro Proceso</span>
           <h2
-            className="font-serif text-cream leading-tight"
+            className="font-serif text-cream leading-tight mb-4"
             style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 500 }}
           >
-            Soluciones <em className="italic text-gold-light">Integrales</em>
-            <br />para tu Empresa
+            Metodología <em className="italic text-gold-light">Franko</em>
           </h2>
+          <p className="font-sans text-mist text-[0.95rem] font-light">
+            Nuestro proceso probado en más de 500 eventos corporativos exitosos
+          </p>
         </motion.div>
 
         {/* Grid */}
         <div
-          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           style={{
             gap: '1.5px',
             background: 'var(--border)',
           }}
         >
-          {SERVICES.map((svc, i) => {
-            const Icon = svc.icon
+          {/* Renderizado de los 5 pasos */}
+          {STEPS.map((step, i) => {
+            const Icon = step.icon
             return (
               <motion.div
-                key={svc.num}
+                key={step.num}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -126,7 +117,7 @@ export default function Services() {
                     color: 'rgba(180,152,90,0.12)',
                   }}
                 >
-                  {svc.num}
+                  {step.num}
                 </span>
 
                 {/* Icon */}
@@ -148,12 +139,12 @@ export default function Services() {
                   className="font-serif text-cream mb-3 leading-snug"
                   style={{ fontSize: '1.3rem', fontWeight: 500 }}
                 >
-                  {svc.name}
+                  {step.name}
                 </h3>
 
                 {/* Description */}
                 <p className="font-sans text-mist text-[0.85rem] leading-relaxed">
-                  {svc.desc}
+                  {step.desc}
                 </p>
 
                 {/* Arrow */}
@@ -168,6 +159,34 @@ export default function Services() {
               </motion.div>
             )
           })}
+
+          {/* TARJETA 6: CALL TO ACTION (Rellena el hueco) */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.75, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center justify-center text-center relative overflow-hidden"
+            style={{ 
+              background: 'linear-gradient(135deg, var(--card), #14171f)', 
+              padding: '2.5rem 2rem' 
+            }}
+          >
+            <div className="absolute inset-0 pointer-events-none" style={{ border: '1px solid rgba(180,152,90,0.1)' }} />
+            <h3 className="font-serif text-gold-light mb-4" style={{ fontSize: '1.8rem', fontWeight: 500 }}>
+              ¿Listo para empezar?
+            </h3>
+            <p className="font-sans text-mist text-[0.9rem] mb-8 px-4 leading-relaxed">
+              Hablemos sobre los objetivos de tu próximo evento corporativo y cómo podemos hacerlo extraordinario.
+            </p>
+            <a 
+              href="#contact" 
+              className="px-8 py-3 text-[0.75rem] tracking-[0.2em] uppercase border border-gold text-gold hover:bg-gold hover:text-obsidian transition-colors duration-400"
+            >
+              Cotizar Evento
+            </a>
+          </motion.div>
+
         </div>
       </div>
     </section>
