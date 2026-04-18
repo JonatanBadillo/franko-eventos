@@ -9,6 +9,9 @@ import Testimonials      from './components/Testimonials'
 import FAQ               from './components/FAQ'
 import Contact           from './components/Contact'
 import Footer            from './components/Footer'
+import SpecializedServices from './components/SpecializedServices'
+import CasosDeExito from './components/Casosdeexito'
+import Liderazgo from './components/liderazgo'
 
 export default function App() {
   return (
@@ -20,6 +23,9 @@ export default function App() {
         <Stats />
         <Services />
         <ExperienceGallery />
+        <SpecializedServices/>
+        <CasosDeExito/>
+        <Liderazgo/>
         <ClientsCarousel />
         <Testimonials />
         <FAQ />
