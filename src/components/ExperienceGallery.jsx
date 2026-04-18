@@ -6,67 +6,24 @@ import {
 
 const MEDIA = [
   {
-    id: 1, type: 'video',
-    src:    '/videos/gallery/congreso-2024.mp4',
-    poster: '/images/gallery/congreso-2024.jpg',
-    label: 'Congreso Nacional 2024',
-    location: 'CDMX', guests: '1,200',
+    id: 1, type: 'image',
+    src: `${import.meta.env.BASE_URL}images/gallery1.png`,
     ph: 'linear-gradient(135deg,#1a2035 0%,#251e12 100%)',
   },
   {
     id: 2, type: 'image',
-    src:    '/images/gallery/gala-2023.jpg',
-    label: 'Gala Ejecutiva 2023',
-    location: 'Monterrey', guests: '400',
+    src: `${import.meta.env.BASE_URL}images/gallery2.png`,
     ph: 'linear-gradient(160deg,#20152a 0%,#1a2030 100%)',
   },
   {
     id: 3, type: 'image',
-    src:    '/images/gallery/team-building.jpg',
-    // Foto sin descripción
+    src: `${import.meta.env.BASE_URL}images/gallery3.png`,
     ph: 'linear-gradient(135deg,#152018 0%,#1e2825 100%)',
   },
   {
-    id: 4, type: 'video',
-    src:    '/videos/gallery/lanzamiento-2024.mp4',
-    poster: '/images/gallery/lanzamiento-2024.jpg',
-    label: 'Lanzamiento de Producto',
-    location: 'Guadalajara', guests: '800',
+    id: 4, type: 'image',
+    src: `${import.meta.env.BASE_URL}images/gallery4.png`,
     ph: 'linear-gradient(160deg,#25180a 0%,#1a2032 100%)',
-  },
-  {
-    id: 5, type: 'image',
-    src:    '/images/gallery/convencion-2023.jpg',
-    label: 'Convención Anual',
-    location: 'Cancún', guests: '600',
-    ph: 'linear-gradient(135deg,#0e1a28 0%,#201a10 100%)',
-  },
-  {
-    id: 6, type: 'image',
-    src:    '/images/gallery/banquete-2024.jpg',
-    // Foto sin descripción
-    ph: 'linear-gradient(160deg,#1e1228 0%,#0e1a20 100%)',
-  },
-  {
-    id: 7, type: 'video',
-    src:    '/videos/gallery/keynote-2024.mp4',
-    poster: '/images/gallery/keynote-2024.jpg',
-    label: 'Keynote Ejecutivo',
-    location: 'CDMX', guests: '2,000',
-    ph: 'linear-gradient(135deg,#0a1020 0%,#201510 100%)',
-  },
-  {
-    id: 8, type: 'image',
-    src:    '/images/gallery/teambuilding-2.jpg',
-    // Foto sin descripción
-    ph: 'linear-gradient(160deg,#182015 0%,#10182a 100%)',
-  },
-  {
-    id: 9, type: 'image',
-    src:    '/images/gallery/gala-2024.jpg',
-    label: 'Gala de Premiación',
-    location: 'CDMX', guests: '550',
-    ph: 'linear-gradient(135deg,#20101a 0%,#101828 100%)',
   },
 ]
 
@@ -294,7 +251,6 @@ function GalleryCard({ item, index, onOpen }) {
             loading="lazy"
             className="w-full h-full object-cover transition-transform duration-1000 ease-out"
             style={{ transform: hovered ? 'scale(1.1)' : 'scale(1)' }}
-            onError={(e) => { e.target.style.display = 'none' }}
           />
         </div>
       )}
@@ -364,6 +320,16 @@ function GalleryCard({ item, index, onOpen }) {
  * ═══════════════════════════════════════════════════════════ */
 export default function ExperienceGallery() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
+  const [showAll, setShowAll] = useState(false)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const displayedMedia = (isMobile && !showAll) ? MEDIA.slice(0, 8) : MEDIA
 
   const openLightbox  = (index) => { 
     setLightboxIndex(index)
@@ -410,7 +376,7 @@ export default function ExperienceGallery() {
         {/* ── Simple Grid (3 columns on large, 2 on tablet, 1 on mobile) ── */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-[300px] md:auto-rows-[350px]">
           <AnimatePresence mode="popLayout">
-            {MEDIA.map((item, i) => (
+            {displayedMedia.map((item, i) => (
               <GalleryCard
                 key={item.id}
                 item={item}
@@ -420,6 +386,24 @@ export default function ExperienceGallery() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* ── Load More Button (Mobile Only) ── */}
+        {isMobile && !showAll && MEDIA.length > 8 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-10 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll(true)}
+              className="group relative flex items-center justify-center gap-2 px-8 py-3 border border-gold/50 text-gold hover:bg-gold hover:text-ink font-medium rounded-full transition-all duration-300"
+            >
+              <span className="font-sans text-xs tracking-[0.15em] uppercase">Ver más galería</span>
+              <ChevronRight size={14} strokeWidth={2} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </motion.div>
+        )}
 
       </div>
 

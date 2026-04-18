@@ -4,28 +4,28 @@ import { ChevronDown, HelpCircle } from 'lucide-react'
 
 const FAQ_ITEMS = [
   {
-    q: '¿Con cuánta anticipación debo contratar sus servicios?',
-    a: 'Recomendamos iniciar la planificación con un mínimo de 3 meses de anticipación para eventos medianos (hasta 300 personas) y 6 meses para congresos o galas de mayor escala. Sin embargo, tenemos capacidad para responder a solicitudes urgentes según disponibilidad y agenda.',
+    q: '¿Qué tipo de eventos corporativos organizan?',
+    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   },
   {
-    q: '¿Trabajan fuera de la Ciudad de México?',
-    a: 'Sí. Tenemos operaciones activas en más de 30 ciudades de México, incluyendo Monterrey, Guadalajara, Cancún, Los Cabos, Puebla y Mérida. También coordinamos eventos internacionales bajo solicitud especial con nuestra red de proveedores globales.',
+    q: '¿Con cuánto tiempo de anticipación debo contactarlos?',
+    a: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    q: '¿Ofrecen servicios individuales o solo paquetes completos?',
-    a: 'Ambos. Podemos encargarnos de la producción integral de su evento o proveer servicios específicos como producción audiovisual, catering o logística de invitados. Cada propuesta se personaliza completamente a las necesidades y presupuesto del cliente.',
+    q: '¿Ofrecen servicios de banquetería y catering?',
+    a: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.',
   },
   {
-    q: '¿Cómo es el proceso de cotización?',
-    a: 'Tras recibir su solicitud, un ejecutivo de cuenta se pondrá en contacto en menos de 24 horas para agendar una sesión de briefing. Con base en sus necesidades, objetivos y presupuesto, elaboramos una propuesta detallada en un plazo de 72 horas hábiles.',
+    q: '¿Cuentan con opciones de recintos o venues para los eventos?',
+    a: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
   },
   {
-    q: '¿Qué garantías ofrecen respecto a proveedores y calidad?',
-    a: 'Trabajamos exclusivamente con proveedores certificados y auditados periódicamente. Todos nuestros contratos incluyen cláusulas de garantía de servicio. Contamos con pólizas de seguro de responsabilidad civil y planes de contingencia documentados para cada evento.',
+    q: '¿Tienen paquetes preestablecidos o todo es a la medida?',
+    a: 'Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.',
   },
   {
-    q: '¿Pueden organizar eventos híbridos o totalmente virtuales?',
-    a: 'Sí. Contamos con infraestructura tecnológica para eventos híbridos y virtuales: streaming profesional en múltiples plataformas, moderación en línea, salas virtuales de networking y producción audiovisual adaptada a formatos digitales.',
+    q: '¿Trabajan en toda la República Mexicana?',
+    a: 'Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.',
   },
 ]
 

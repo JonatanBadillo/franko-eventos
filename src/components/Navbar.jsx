@@ -5,8 +5,10 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 const NAV_LINKS = [
   { label: 'Nosotros',     href: '#about'        },
   { label: 'Metodología',  href: '#metodologia'  },
+    { label: 'Galería',      href: '#gallery'      },
   { label: 'Servicios',    href: '#specialized-services' },
   { label: 'Casos de Éxito',href: '#casos-exito' },
+
   { label: 'Testimonios',  href: '#testimonials' },
   { label: 'FAQ',          href: '#faq'          },
 ]
