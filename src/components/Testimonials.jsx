@@ -6,7 +6,7 @@ const TESTIMONIALS = [
   {
     quote:
       'Franko transformó completamente nuestra convención anual. Su atención al detalle, profesionalismo y capacidad para entender nuestra visión superó todas nuestras expectativas. El evento fue un éxito rotundo.',
-    name:  'María Rodríguez',
+    name:  'Sergio de la Rosa',
     stars: 5,
   },
   {

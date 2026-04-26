@@ -25,7 +25,7 @@ export default function App() {
         <ExperienceGallery />
         <SpecializedServices/>
         <CasosDeExito/>
-        <Liderazgo/>
+        {/* <Liderazgo/> */}
         <ClientsCarousel />
         <Testimonials />
         <FAQ />
