@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: 'Casos de Éxito',href: '#casos-exito' },
 
   { label: 'Testimonios',  href: '#testimonials' },
-  { label: 'FAQ',          href: '#faq'          },
+  // { label: 'FAQ',          href: '#faq'          },
 ]
 
 export default function Navbar() {

@@ -25,29 +25,26 @@ const INFO = [
   },
   {
     icon: Mail,
-    label: 'Correo Corporativo',
+    label: 'Email Corporativo',
     value: 'direcciong@frankoeventoscorporativos.mx',
     href: 'mailto:direcciong@frankoeventoscorporativos.mx',
   },
   {
     icon: MapPin,
-    label: 'Ubicación',
-    value: 'Guadalajara, Jalisco',
+    label: 'Sede',
+    value: 'Guadalajara, México',
     href: 'https://maps.google.com/?q=Guadalajara,+Jalisco',
   },
 ]
 
-const SOCIAL = [
-  { icon: Instagram, label: 'Instagram', href: '#' },
-  { icon: Linkedin,  label: 'LinkedIn',  href: '#' },
-  { icon: Facebook,  label: 'Facebook',  href: '#' },
-]
-
-const EVENT_SIZES = [
-  'Pequeño (hasta 100 personas)',
-  'Mediano (100 – 500 personas)',
-  'Grande (500 – 1,000 personas)',
-  'Masivo (1,000+ personas)',
+// Tipos de eventos basados en la información de tus servicios
+const EVENT_TYPES = [
+  'Evento Social Corporativo',
+  'Capacitación y Desarrollo',
+  'Evento Cultural',
+  'Branding y Lanzamiento',
+  'Congreso o Convención',
+  'Otro'
 ]
 
 function FloatingInput({ id, label, type = 'text', as = 'input', options, rows = 4 }) {
@@ -98,17 +95,18 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    // Obtener los datos del formulario
+    // Obtener los datos del nuevo formulario
     const formData = new FormData(e.target)
     const name = formData.get('name')
-    const email = formData.get('email')
     const company = formData.get('company')
-    const size = formData.get('size') || 'No especificado'
+    const email = formData.get('email')
+    const whatsapp = formData.get('whatsapp')
+    const eventType = formData.get('eventType') || 'No especificado'
     const message = formData.get('message')
 
-    // Construir el asunto y cuerpo del correo
-    const subject = `Nueva Solicitud de Cotización - ${name} (${company})`
-    const body = `Nombre Completo: ${name}\nCorreo: ${email}\nEmpresa: ${company}\nTamaño del Evento: ${size}\n\nMensaje:\n${message}`
+    // Construir el asunto y cuerpo del correo actualizado
+    const subject = `Nueva Solicitud - ${name} (${company})`
+    const body = `Nombre Completo: ${name}\nEmpresa: ${company}\nEmail Corporativo: ${email}\nWhatsApp: ${whatsapp}\nTipo de Evento: ${eventType}\n\nDetalles del Proyecto:\n${message}`
 
     // Abrir cliente de correo predeterminado
     window.location.href = `mailto:direcciong@frankoeventoscorporativos.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
@@ -137,24 +135,24 @@ export default function Contact() {
 
       <div className="max-w-screen-xl mx-auto relative z-10">
 
-        {/* Header */}
+        {/* ── Header adaptado a la imagen ── */}
         <motion.div {...reveal} className="text-center mb-20">
           <span className="inline-block py-1 px-3 rounded-full border border-gold/30 text-gold text-sm tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-            Contacto
+            Inicia tu transformación
           </span>
           <h2
             className="font-serif text-cream leading-tight mb-6"
             style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 500 }}
           >
-            Hagamos algo{' '}
+            Conversemos sobre tu{' '}
             <span className="relative inline-block">
-              <em className="italic text-gold-light relative z-10">extraordinario</em>
+              <em className="italic text-gold-light relative z-10">próximo</em>
               <span className="absolute bottom-1 left-0 w-full h-3 bg-gold/20 -z-10 -rotate-2"></span>
             </span>
-            <br />juntos
+            <br />evento
           </h2>
           <p className="text-mist max-w-2xl mx-auto font-light text-lg">
-            Permítenos diseñar una experiencia memorable para tu próxima convención o evento corporativo.
+            Cuéntanos tu visión y un consultor estratégico te contactará en menos de 24 horas para una sesión exploratoria sin compromiso.
           </p>
         </motion.div>
 
@@ -167,7 +165,7 @@ export default function Contact() {
             className="lg:col-span-5 flex flex-col justify-between"
           >
             <div>
-              {/* WhatsApp Prominent Button */}
+              {/* WhatsApp Prominent Button Mantenido */}
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -186,16 +184,15 @@ export default function Contact() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-lg mb-1">Chat Directo</h3>
-                  <p className="text-white/70 text-sm mb-2">Respuesta inmediata</p>
+                  <h3 className="text-white font-medium text-lg mb-1">Contacto Directo</h3>
                   <p className="text-[#25D366] font-semibold tracking-wide">+52 33 3167 5489</p>
                 </div>
               </motion.a>
 
-              {/* Other Info */}
+              {/* Other Info adaptada */}
               <div className="space-y-8 mb-12 pl-2">
                 {INFO.map((item, idx) => {
-                  if (item.label === 'WhatsApp') return null; // Ya lo mostramos arriba
+                  if (item.label === 'WhatsApp') return null;
                   const Icon = item.icon
                   return (
                     <div key={item.label} className="flex items-start gap-5 group">
@@ -220,30 +217,6 @@ export default function Contact() {
                 })}
               </div>
             </div>
-
-            {/* Social
-            <div className="pl-2">
-              <p className="text-xs text-mist/60 uppercase tracking-widest mb-4">
-                Síguenos
-              </p>
-              <div className="flex gap-4">
-                {SOCIAL.map((s) => {
-                  const Icon = s.icon
-                  return (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      aria-label={s.label}
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-gold hover:bg-gold hover:text-ink text-mist transition-all duration-300"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon size={18} strokeWidth={1.5} />
-                    </a>
-                  )
-                })}
-              </div>
-            </div> */}
           </motion.div>
 
           {/* ── Right: Form ── */}
@@ -269,35 +242,36 @@ export default function Contact() {
                     ¡Mensaje Preparado!
                   </h3>
                   <p className="font-sans text-mist text-lg leading-relaxed max-w-md">
-                    Se ha abierto tu cliente de correo electrónico. Envía el mensaje y un ejecutivo de cuenta se comunicará contigo pronto.
+                    Se ha abierto tu cliente de correo electrónico. Envía el mensaje y un consultor estratégico se comunicará contigo pronto.
                   </p>
                   <button 
                     onClick={() => setSubmitted(false)}
                     className="mt-8 text-gold hover:text-gold-light border-b border-gold/30 hover:border-gold transition-colors pb-1"
                   >
-                    Enviar otro mensaje
+                    Enviar otra solicitud
                   </button>
                 </motion.div>
               ) : (
                 <>
-                  <h3 className="text-2xl font-serif text-cream mb-8">Envíanos tus requerimientos</h3>
                   <form onSubmit={handleSubmit}>
+                    {/* Campos ajustados a la imagen */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-                      <FloatingInput id="name"    label="Nombre Completo *"        type="text"  />
-                      <FloatingInput id="email"   label="Correo Corporativo *"     type="email" />
+                      <FloatingInput id="name"    label="Nombre Completo"    type="text"  />
+                      <FloatingInput id="company" label="Empresa"            type="text"  />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-                      <FloatingInput id="company" label="Empresa"                  type="text"  />
-                      <FloatingInput
-                        id="size"
-                        label="Tamaño del Evento *"
-                        as="select"
-                        options={EVENT_SIZES}
-                      />
+                      <FloatingInput id="email"   label="Email Corporativo"  type="email" />
+                      <FloatingInput id="whatsapp" label="WhatsApp"          type="tel"   />
                     </div>
                     <FloatingInput
+                      id="eventType"
+                      label="Tipo de Evento"
+                      as="select"
+                      options={EVENT_TYPES}
+                    />
+                    <FloatingInput
                       id="message"
-                      label="Cuéntanos sobre tu Evento *"
+                      label="Cuéntanos sobre tu proyecto (Objetivos, audiencia, fecha...)"
                       as="textarea"
                       rows={5}
                     />
@@ -306,14 +280,16 @@ export default function Contact() {
                       type="submit"
                       className="group relative w-full flex items-center justify-center gap-3 bg-gold hover:bg-gold-light text-ink font-medium py-4 px-8 rounded-xl overflow-hidden transition-all duration-300 mt-4"
                     >
-                      <span className="relative z-10 text-[1.05rem]">Enviar Solicitud</span>
+                      <span className="relative z-10 text-[1.05rem]">Enviar solicitud</span>
                       <Send size={18} className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                       
                       {/* Efecto hover del botón */}
                       <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                     </button>
-                    <p className="text-center text-xs text-mist/50 mt-4">
-                      * Al enviar se abrirá tu aplicación de correo electrónico.
+                    
+                    {/* Texto del footer del formulario */}
+                    <p className="text-center text-xs text-mist/60 mt-6 font-light">
+                      Respuesta garantizada en menos de 24 horas hábiles.
                     </p>
                   </form>
                 </>

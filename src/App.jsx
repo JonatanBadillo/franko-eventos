@@ -28,7 +28,7 @@ export default function App() {
         {/* <Liderazgo/> */}
         <ClientsCarousel />
         <Testimonials />
-        <FAQ />
+        {/* <FAQ /> */}
         <Contact />
       </main>
       <Footer />
